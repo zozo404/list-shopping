@@ -37,7 +37,7 @@ function App(){
 
     axios({
       method: 'POST',
-      url: 'http://localhost/shopping-list/php/insert.php',
+      url: 'http://localhost/list-shopping/php/insert.php',
       responseType: 'json',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -46,7 +46,7 @@ function App(){
     })
     .then((response)=>{
       console.log(response);
-      alert(response.data.message);
+     console.log(response.data.message);
       if(response.data.error == false){
 
         article.id_produit = response.data.id_produit;
@@ -74,7 +74,7 @@ function App(){
 
     axios({
       method: 'POST',
-      url: 'http://localhost/shopping-list/php/edit.php',
+      url: 'http://localhost/list-shopping/php/edit.php',
       responseType: 'json',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -83,7 +83,7 @@ function App(){
     })
     .then((response)=>{
       console.log(response);
-      alert(response.data.message);
+     console.log(response.data.message);
       if(response.data.error == false){
 
         let newArticles = articles.map((article) => {
@@ -112,7 +112,7 @@ function App(){
 
     axios({
       method: 'POST',
-      url: 'http://localhost/shopping-list/php/edit.php',
+      url: 'http://localhost/list-shopping/php/edit.php',
       responseType: 'json',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -121,7 +121,7 @@ function App(){
     })
     .then((response)=>{
       console.log(response);
-      alert(response.data.message);
+     console.log(response.data.message);
       if(response.data.error == false){
 
         let newArticles = articles.map((article) => {
@@ -151,7 +151,7 @@ function App(){
 
     axios({
       method: 'POST',
-      url: 'http://localhost/shopping-list/php/delete.php',
+      url: 'http://localhost/list-shopping/php/delete.php',
       responseType: 'json',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -160,7 +160,7 @@ function App(){
     })
     .then((response)=>{
       console.log(response);
-      alert(response.data.message);
+     console.log(response.data.message);
       if(response.data.error == false){
 
         let newArticles = [];
