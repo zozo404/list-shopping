@@ -1,3 +1,21 @@
+ ⚠️ Si vous récupérer pour la première fois le dossier, installez les modules et axios:
+- Installer les modules avec:
+
+```bash
+npm install
+```
+
+- Installer axios avec:
+
+```bash
+npm i axios
+```
+- Une fois installé, lancez le projet avec un:
+```bash
+npm start
+```
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
