@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Button from 'react-bootstrap/Button';
 
 function Form({formTitle, addArticle}){
 
@@ -31,11 +32,28 @@ function Form({formTitle, addArticle}){
                     <div className="col-sm-2">
                         <input type="number" value={quantity} onChange={(e)=>{setQuantity(e.target.value)}} className="form-control"/>
                     </div>
-                    <div className="col-sm-5">
+                    <div className="col-sm-3">
                         <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} className="form-control"/>
                     </div>
-                    <button type="submit" className="btn btn-primary col-sm-3">Ajouter</button>
+
+                    <div className="col-sm-2">
+                        <label for="magasin-select">Choisir un magasin:</label><br/>
+                        <select name="magasin" id="magasin-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="leclerc">Leclerc</option>
+                            <option value="carrefour">Carrefour</option>
+                            <option value="auchan">auchan</option>
+                            <option value="lidl">lidl</option>
+                        </select>
+                    </div>
+                    <div className="col-sm-2">
+                        
+                    </div>
+                
                 </div>
+                <button type="submit" className="btn btn-info text-white mt-2">Ajouter</button>
+                
+                
             </form>
         </div>
     )
