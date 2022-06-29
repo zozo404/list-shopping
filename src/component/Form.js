@@ -39,11 +39,9 @@ function Form({formTitle, addArticle}){
                     <div className="col-sm-2">
                         <label for="magasin-select">Choisir un magasin:</label><br/>
                         <select name="magasin" id="magasin-select">
-                            <option value="">--Please choose an option--</option>
+                            <option value="">--Choississez un magasin--</option>
                             <option value="leclerc">Leclerc</option>
-                            <option value="carrefour">Carrefour</option>
-                            <option value="auchan">auchan</option>
-                            <option value="lidl">lidl</option>
+                            
                         </select>
                     </div>
                     <div className="col-sm-2">
