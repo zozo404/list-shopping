@@ -18,8 +18,8 @@ export default function Article({article, setQuantity, setName, deleteArticle}){
 
     return (
         <div style={{display: "flex", alignItems: "center"}}>
-            <button className="btn btn-danger btn-sm" onClick={()=>{deleteArticle(article.id_produit)}}>Delete</button>
-            <button className="btn btn-warning btn-sm" onClick={()=>{setEditMode(!editMode)}}>Edit</button>
+            <button className="btn btn-danger btn-sm me-1" onClick={()=>{deleteArticle(article.id_produit)}}>Supprimer</button>
+            <button className="btn btn-warning btn-sm" onClick={()=>{setEditMode(!editMode)}}>Modifier</button>
             {content}
         </div>
     )

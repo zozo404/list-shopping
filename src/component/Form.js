@@ -34,8 +34,8 @@ function Form({formTitle, addArticle}){
                     <div className="col-sm-5">
                         <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} className="form-control"/>
                     </div>
+                    <button type="submit" className="btn btn-primary col-sm-3">Ajouter</button>
                 </div>
-                <button type="submit" className="btn btn-primary">Ajouter</button>
             </form>
         </div>
     )

@@ -5,7 +5,7 @@ function ItemList({articles, setQuantity, setName, deleteArticle}){
 
     return (
         <div>
-            <h4>Liste des articles</h4>
+            <p className='p-article'>Liste des articles</p>
             {
                 articles.map((article, index) => {
                     return <Article key={index} article={article} setQuantity={setQuantity} setName={setName} deleteArticle={deleteArticle}/>

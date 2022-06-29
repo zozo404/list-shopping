@@ -1,5 +1,29 @@
-body{
+#body{
     background-image: url('./led.gif');
     background-size: cover;
 
+}
+.container{
+    color: white;
+}
+.container h3{
+    padding-bottom: 20px;
+}
+#root{
+display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 520px;
+  min-height: 600px;
+  background: #161a2b;
+  text-align: center;
+  margin: 128px auto;
+  border-radius: 10px;
+  padding-bottom: 32px;
+}
+.p-article{
+    padding-top: 20px;
+}
+.row{
+    justify-content: space-evenly;
 }

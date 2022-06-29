@@ -3,6 +3,8 @@ import Form from './component/Form';
 import ItemList from './component/ItemList';
 import {v4 as uuidv4} from 'uuid';
 import axios from 'axios';
+import './App.css';
+
 
 function App(){
 
@@ -12,7 +14,7 @@ function App(){
 
     axios({
       method: 'post',
-      url: 'http://localhost/shopping-list/php/load.php',
+      url: 'http://localhost/list-shopping/php/load.php',
       data: {}
     })
     .then((response)=>{
