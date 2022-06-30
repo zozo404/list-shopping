@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 // import Button from 'react-bootstrap/Button';
 
 function Form({formTitle, addArticle}){
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(0);
+    const [magasins, setMagasins] = useState([]);
 
 
     useEffect(() => {
@@ -23,6 +25,25 @@ function Form({formTitle, addArticle}){
             setQuantity(0)
         }
     }
+    useEffect(()=>{
+        axios({
+            method: 'GET',
+            url: 'http://localhost/list-shopping/php/get-store.php',
+            responseType: 'json',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: {}
+          })
+          .then((response)=>{
+            console.log(response);
+            setMagasins(response.data);
+           
+          })
+          .catch((error)=>{
+            console.log(error);
+          });
+    }, [])
 
     return (
         <div>
@@ -38,14 +59,16 @@ function Form({formTitle, addArticle}){
 
                     <div className="col-sm-2">
                         <label for="magasin-select">Choisir un magasin:</label><br/>
-                        <select name="magasin" id="magasin-select">
-                            <option value="">--Choississez un magasin--</option>
-                            <option value="leclerc">Leclerc</option>
+                        <select className='form-select' name="magasin" id="magasin-select">
+                            <option value="" >--Choississez un magasin--</option>
+                            {magasins.map((magasin, index)=>{
+                                return <option value={magasin.id_magasin} key={index} >{magasin.nom_magasin}</option>
+                            })}
                             
                         </select>
                     </div>
                     <div className="col-sm-2">
-                        
+                        {/* code pour ajouter magasin */}
                     </div>
                 
                 </div>
