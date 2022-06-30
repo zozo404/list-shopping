@@ -6,7 +6,7 @@ export default function Article({article, setQuantity, setName, deleteArticle}){
 
     let content = <div style={{display: "flex", alignItems: "center"}}>
                         
-                        <p className="ms-5">{article.quantite_produit} | {article.nom_produit}</p>
+                        <p className="ms-5">{article.nom_produit} - {article.quantite_produit} | {article.nom_magasin}</p>
                   </div>
 
             if(editMode){

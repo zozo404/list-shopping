@@ -33,6 +33,7 @@ function App(){
     let formData = new FormData();
     formData.append('nom_produit', article.nom_produit)
     formData.append('quantite_produit', article.quantite_produit)
+    formData.append('fk_id_magasin', article.fk_id_magasin)
     formData.append('insert_produit', 1)
 
     axios({

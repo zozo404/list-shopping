@@ -5,7 +5,10 @@ header("Access-Control-Allow-Headers: *");
 
 require 'connexion.php';
 
-$query = "SELECT * FROM produit";
+$query = "SELECT * 
+FROM produit as p 
+LEFT JOIN magasin as m
+ON m.id_magasin = p.fk_id_magasin";
 // $query = "SELECT * FROM produit INNER JOIN magasin on id_produit = id_produit";
 
 $requete = $connexion->prepare($query);

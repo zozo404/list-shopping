@@ -7,6 +7,7 @@ function Form({formTitle, addArticle}){
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [magasins, setMagasins] = useState([]);
+    const [idStoreSelected, setIdStoreSelected] = useState(null);
 
 
     useEffect(() => {
@@ -20,9 +21,11 @@ function Form({formTitle, addArticle}){
             let article = {}
             article.nom_produit = name;
             article.quantite_produit = quantity;
+            article.fk_id_magasin = idStoreSelected;
             addArticle(article)
             setName('');
-            setQuantity(0)
+            setQuantity(0);
+            
         }
     }
     useEffect(()=>{
@@ -59,7 +62,7 @@ function Form({formTitle, addArticle}){
 
                     <div className="col-sm-2">
                         <label for="magasin-select">Choisir un magasin:</label><br/>
-                        <select className='form-select' name="magasin" id="magasin-select">
+                        <select className='form-select' name="magasin" id="magasin-select" onChange={(e)=>{setIdStoreSelected(e.target.value)}}>
                             <option value="" >--Choississez un magasin--</option>
                             {magasins.map((magasin, index)=>{
                                 return <option value={magasin.id_magasin} key={index} >{magasin.nom_magasin}</option>
