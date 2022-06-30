@@ -48,7 +48,7 @@ function App(){
     .then((response)=>{
       console.log(response);
      console.log(response.data.message);
-      if(response.data.error == false){
+      if(response.data.error === false){
 
         article.id_produit = response.data.id_produit;
         const newArticles = [...articles, article]
@@ -85,7 +85,7 @@ function App(){
     .then((response)=>{
       console.log(response);
      console.log(response.data.message);
-      if(response.data.error == false){
+      if(response.data.error === false){
 
         let newArticles = articles.map((article) => {
       
@@ -123,7 +123,7 @@ function App(){
     .then((response)=>{
       console.log(response);
      console.log(response.data.message);
-      if(response.data.error == false){
+      if(response.data.error === false){
 
         let newArticles = articles.map((article) => {
           
@@ -162,7 +162,7 @@ function App(){
     .then((response)=>{
       console.log(response);
      console.log(response.data.message);
-      if(response.data.error == false){
+      if(response.data.error === false){
 
         let newArticles = [];
         articles.map((article) => {
@@ -185,7 +185,7 @@ function App(){
 
 return (
   <div className="container">
-    <h3>Liste de courses</h3>
+    <h3 className='pt-3'>Liste de courses</h3>
     <Form formTitle="Ajouter un article" addArticle={addArticle}/>
     <ItemList articles={articles} setQuantity={setQuantity} setName={setName} deleteArticle={deleteArticle}/>
   </div>

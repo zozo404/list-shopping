@@ -10,14 +10,10 @@ function Form({formTitle, addArticle}){
     const [idStoreSelected, setIdStoreSelected] = useState(null);
 
 
-    useEffect(() => {
-        console.log('composant chargé')
-    }, [name, quantity])
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(name != "" && quantity > 0){
+        if(name !== "" && quantity > 0){
             let article = {}
             article.nom_produit = name;
             article.quantite_produit = quantity;
@@ -25,7 +21,6 @@ function Form({formTitle, addArticle}){
             addArticle(article)
             setName('');
             setQuantity(0);
-            
         }
     }
     useEffect(()=>{

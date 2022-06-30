@@ -49,3 +49,25 @@ if(isset($_POST['quantite_produit'])){
     }
 
 }
+
+if(isset($_POST['fk_id_magasin'])){
+
+    $query = "UPDATE produit SET fk_id_magasin = :fk_id_magasin WHERE id_produit = :id_produit";
+    $requete = $connexion->prepare($query);
+    $requete->bindValue(':fk_id_magasin', $_POST['fk_id_magasin']);
+    $requete->bindValue(':id_produit', $_POST['id_produit']);
+    $result = $requete->execute();
+
+    if($result){
+        echo json_encode([
+            'error' => false,
+            'message' => 'Magasin modifié avec succès'
+        ]);
+    }else{
+        echo json_encode([
+            'error' => true,
+            'message' => 'Echec de la modification du Magasin'
+        ]);
+    }
+
+}
