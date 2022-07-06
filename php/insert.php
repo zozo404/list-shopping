@@ -15,11 +15,26 @@ if(isset($_POST['insert_produit'])){
     $requete->bindValue(':fk_id_magasin', $_POST['fk_id_magasin']);
     $result = $requete->execute();
 
+
+    $id_produit = $connexion->lastInsertId();
+
+    $query = "SELECT * 
+    FROM produit as p 
+    LEFT JOIN magasin as m
+    ON m.id_magasin = p.fk_id_magasin
+    WHERE id_produit = :id_produit";
+    $requete = $connexion->prepare($query);
+    $requete->bindValue(':id_produit', $id_produit);
+    $result = $requete->execute();
+
+    $produit = $requete->fetch(PDO::FETCH_ASSOC);
+
+
     if($result){
         echo json_encode([
             'error' => false,
             'message' => 'Produit ajouté avec succès',
-            'id_produit' => $connexion->lastInsertId()
+            'produit' => $produit
         ]);
     }else{
         echo json_encode([

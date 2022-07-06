@@ -17,7 +17,6 @@ function Form({formTitle, addArticle, magasins}){
             article.nom_produit = name;
             article.quantite_produit = quantity;
             article.fk_id_magasin = magasin;
-            article.nom_magasin = magasin; //afficher nom
             addArticle(article);
             setName('');
             setQuantity(0);

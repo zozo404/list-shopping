@@ -65,8 +65,7 @@ function App(){
      console.log(response.data.message);
       if(response.data.error === false){
 
-        article.id_produit = response.data.id_produit;
-        const newArticles = [...articles, article]
+        const newArticles = [...articles, response.data.produit]
         setArticles(newArticles);
 
       }
