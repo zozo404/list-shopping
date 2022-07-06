@@ -1,4 +1,4 @@
- ⚠️ Si vous récupérer pour la première fois le dossier, installez les modules et axios:
+ ⚠️ Si vous récupérez pour la première fois le dossier, installez les modules et axios:
 - Installer les modules avec:
 
 ```bash
