@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 // import Button from 'react-bootstrap/Button';
 
@@ -6,8 +6,9 @@ function Form({formTitle, addArticle}){
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(0);
+    const [magasin, setMagasin] = useState([]);
     const [magasins, setMagasins] = useState([]);
-    const [idStoreSelected, setIdStoreSelected] = useState(null);
+    // const [idStoreSelected, setIdStoreSelected] = useState(null);
 
 
 
@@ -17,31 +18,13 @@ function Form({formTitle, addArticle}){
             let article = {}
             article.nom_produit = name;
             article.quantite_produit = quantity;
-            article.fk_id_magasin = idStoreSelected;
+            article.fk_id_magasin = magasin;
             addArticle(article)
             setName('');
             setQuantity(0);
         }
     }
-    useEffect(()=>{
-        axios({
-            method: 'GET',
-            url: 'http://localhost/list-shopping/php/get-store.php',
-            responseType: 'json',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: {}
-          })
-          .then((response)=>{
-            console.log(response);
-            setMagasins(response.data);
-           
-          })
-          .catch((error)=>{
-            console.log(error);
-          });
-    }, [])
+    
 
     return (
         <div>
@@ -57,7 +40,7 @@ function Form({formTitle, addArticle}){
 
                     <div className="col-sm-2">
                         <label for="magasin-select">Choisir un magasin:</label><br/>
-                        <select className='form-select' name="magasin" id="magasin-select" onChange={(e)=>{setIdStoreSelected(e.target.value)}}>
+                        <select className='form-select' name="magasin" id="magasin-select" onChange={(e)=>{setMagasin(e.target.value)}}>
                             <option value="" >--Choississez un magasin--</option>
                             {magasins.map((magasin, index)=>{
                                 return <option value={magasin.id_magasin} key={index} >{magasin.nom_magasin}</option>

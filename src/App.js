@@ -9,6 +9,7 @@ import './App.css';
 function App(){
 
   const [articles, setArticles] = useState([])
+  const [magasins, setMagasins] = useState([])
 
   useEffect(()=>{
 
@@ -21,6 +22,20 @@ function App(){
       console.log(response);
       const courses = response.data;
       setArticles(courses);
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+
+    axios({
+      method: 'post',
+      url: 'http://localhost/list-shopping/php/get-store.php',
+      data: {}
+    })
+    .then((response)=>{
+      console.log(response);
+      const magasins = response.data;
+      setMagasins(magasins);
     })
     .catch((error)=>{
       console.log(error);
@@ -63,6 +78,75 @@ function App(){
 
 
   }
+
+  const setMagasin = (newMagasin, id_magasin)=>{
+    let formData = new FormData();
+    formData.append('id_magasin', id_magasin)
+    formData.append('nom_magasin', newMagasin)
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost/list-shopping/php/get-store.php',
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: {}
+    })
+    .then((response)=>{
+      console.log(response);
+      setMagasin(response.data);
+     
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+  }
+
+
+
+  const editMagasin = (id_magasin, id_article)=>{
+    console.log(id_magasin);
+    console.log(id_article);
+    let formData = new FormData();
+    formData.append('id_magasin', id_magasin)
+    formData.append('id_article', id_article)
+    axios({
+        method: 'POST',
+        url: 'http://localhost/list-shopping/php/edit.php',
+        responseType: 'json',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: formData
+        
+      })
+      .then((response)=>{
+        console.log(response);
+        if(response.data.error === false){
+          console.log("test");
+          let newArticles = [];
+          articles.map((article)=>{
+            let newArticle = article;
+            if(article.id_produit === id_article){
+          console.log(newArticle);
+
+              newArticle.fk_id_magasin = id_magasin;
+          console.log(newArticle);
+
+            }
+            newArticles.push(newArticle);
+          })
+          setArticles(newArticles);
+        }
+       
+      })
+      .catch((error)=>{
+        console.log(error);
+      });
+}
+  
+
 
   const setQuantity = (newQuantity, id_produit) => {
 
@@ -187,7 +271,7 @@ return (
   <div className="container">
     <h3 className='pt-3'>Liste de courses</h3>
     <Form formTitle="Ajouter un article" addArticle={addArticle}/>
-    <ItemList articles={articles} setQuantity={setQuantity} setName={setName} deleteArticle={deleteArticle}/>
+    <ItemList articles={articles} setQuantity={setQuantity} setName={setName} deleteArticle={deleteArticle} magasins={magasins} editMagasin={editMagasin}/>
   </div>
 )
 

@@ -50,12 +50,12 @@ if(isset($_POST['quantite_produit'])){
 
 }
 
-if(isset($_POST['fk_id_magasin'])){
+if(isset($_POST['id_magasin'])){
 
     $query = "UPDATE produit SET fk_id_magasin = :fk_id_magasin WHERE id_produit = :id_produit";
     $requete = $connexion->prepare($query);
-    $requete->bindValue(':fk_id_magasin', $_POST['fk_id_magasin']);
-    $requete->bindValue(':id_produit', $_POST['id_produit']);
+    $requete->bindValue(':fk_id_magasin', $_POST['id_magasin']);
+    $requete->bindValue(':id_produit', $_POST['id_article']);
     $result = $requete->execute();
 
     if($result){
