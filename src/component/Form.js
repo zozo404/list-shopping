@@ -2,13 +2,11 @@ import React, {useState} from 'react';
 import axios from 'axios';
 // import Button from 'react-bootstrap/Button';
 
-function Form({formTitle, addArticle}){
+function Form({formTitle, addArticle, magasins}){
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [magasin, setMagasin] = useState([]);
-    const [magasins, setMagasins] = useState([]);
-    // const [idStoreSelected, setIdStoreSelected] = useState(null);
 
 
 
@@ -19,9 +17,11 @@ function Form({formTitle, addArticle}){
             article.nom_produit = name;
             article.quantite_produit = quantity;
             article.fk_id_magasin = magasin;
-            addArticle(article)
+            article.nom_magasin = magasin; //afficher nom
+            addArticle(article);
             setName('');
             setQuantity(0);
+            // console.log();
         }
     }
     

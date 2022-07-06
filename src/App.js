@@ -132,6 +132,7 @@ function App(){
           console.log(newArticle);
 
               newArticle.fk_id_magasin = id_magasin;
+              newArticle.nom_magasin = response.data.nom_magasin;
           console.log(newArticle);
 
             }
@@ -270,7 +271,7 @@ function App(){
 return (
   <div className="container">
     <h3 className='pt-3'>Liste de courses</h3>
-    <Form formTitle="Ajouter un article" addArticle={addArticle}/>
+    <Form formTitle="Ajouter un article" addArticle={addArticle} magasins={magasins}/>
     <ItemList articles={articles} setQuantity={setQuantity} setName={setName} deleteArticle={deleteArticle} magasins={magasins} editMagasin={editMagasin}/>
   </div>
 )

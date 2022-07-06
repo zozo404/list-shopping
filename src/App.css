@@ -30,4 +30,5 @@ display: flex;
 }
 .div-article div div{
     gap: 15px;
+    margin-bottom: 5px;
 }

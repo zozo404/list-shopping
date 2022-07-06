@@ -57,11 +57,18 @@ if(isset($_POST['id_magasin'])){
     $requete->bindValue(':fk_id_magasin', $_POST['id_magasin']);
     $requete->bindValue(':id_produit', $_POST['id_article']);
     $result = $requete->execute();
+    
+    $query = "SELECT * FROM magasin WHERE id_magasin = :id_magasin";
+    $requete = $connexion->prepare($query);
+    $requete->bindValue(':id_magasin', $_POST['id_magasin']);
+    $result = $requete->execute();
+    $magasin = $requete->fetch(PDO::FETCH_ASSOC);
 
     if($result){
         echo json_encode([
             'error' => false,
-            'message' => 'Magasin modifié avec succès'
+            'message' => 'Magasin modifié avec succès',
+            'nom_magasin'=>$magasin['nom_magasin']
         ]);
     }else{
         echo json_encode([
