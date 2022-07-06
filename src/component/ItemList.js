@@ -4,7 +4,7 @@ import Article from './Article';
 function ItemList({articles, setQuantity, setName, deleteArticle}){
 
     return (
-        <div>
+        <div className='div-article'>
             <p className='p-article'>Liste des articles</p>
             {
                 articles.map((article, index) => {

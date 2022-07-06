@@ -65,9 +65,7 @@ function Form({formTitle, addArticle}){
                             
                         </select>
                     </div>
-                    <div className="col-sm-2">
-                        {/* code pour ajouter magasin */}
-                    </div>
+                    
                 
                 </div>
                 <button type="submit" className="btn btn-info text-white mt-2">Ajouter</button>

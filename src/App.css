@@ -28,3 +28,6 @@ display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
 }
+.div-article div div{
+    gap: 15px;
+}
